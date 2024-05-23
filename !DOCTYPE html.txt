@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Copy to Clipboard</title>
+    <script>
+        function copyToClipboard() {
+            // Text you want to copy
+            var textToCopy = "This is the text to copy to clipboard";
+
+            // Create a temporary textarea element
+            var tempTextarea = document.createElement("textarea");
+            tempTextarea.value = textToCopy;
+
+            // Append the textarea to the body (required for the copy command)
+            document.body.appendChild(tempTextarea);
+
+            // Select the text in the textarea
+            tempTextarea.select();
+            tempTextarea.setSelectionRange(0, 99999); // For mobile devices
+
+            // Copy the selected text to the clipboard
+            document.execCommand("copy");
+
+            // Remove the temporary textarea element from the body
+            document.body.removeChild(tempTextarea);
+
+            // Optionally, you can show an alert or some message to the user
+            alert("Text copied to clipboard: " + textToCopy);
+
+            // Optionally, you can redirect to another page
+            // window.location.href = "https://your-original-page-url.com";
+        }
+
+        // Execute the function when the page loads
+        window.onload = copyToClipboard;
+    </script>
+</head>
+<body>
+</body>
+</html>
